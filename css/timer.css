@@ -3,3 +3,13 @@ body {
     margin-top: 10%;
     font-size: 40px;
 }
+
+.display {
+    display: inline-block;
+    align: center;
+}
+
+.displaypart {
+    display: inline-block;
+    float: left;
+}
