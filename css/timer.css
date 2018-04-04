@@ -1,12 +1,17 @@
 body {
     text-align: center;
     margin-top: 10%;
-    font-size: 40px;
+    font-size: 18px;
+}
+
+header {
+    font-size: 24px;
 }
 
 .display {
     display: inline-block;
     align: center;
+    font-size: 50px;
 }
 
 .displaypart {

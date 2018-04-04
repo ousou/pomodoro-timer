@@ -2,6 +2,7 @@ var timer = {};
 
 timer.running = false;
 
+
 document.addEventListener('DOMContentLoaded', function () {
   if (!Notification) {
     alert('Desktop notifications not available in your browser. Try Chromium.');
@@ -13,10 +14,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.getElementById("start").addEventListener("click", function(){
-    var minutes = 0;
-    var seconds = 5;
-    updateScreen(minutes, 5);
-    startTimer(minutes, 5);
+    var minutes = 25;
+    var seconds = 0;
+    startTimer(minutes, seconds);
+});
+
+document.getElementById("cancel").addEventListener("click", function(){
+    clearInterval(timer.intervalId);
+    timer.running = false;
+    updateScreen(0, 0);
+    setMessage('Press the Start button to start the timer!');
 });
 
 function startTimer(minutes, seconds) {
@@ -24,6 +31,12 @@ function startTimer(minutes, seconds) {
     timer.minutes = minutes;
     timer.seconds = seconds;
     timer.intervalId = setInterval(runTimer, 1000);
+    updateScreen(timer.minutes, timer.seconds);
+    setMessage('Go do some work!');
+}
+
+function setMessage(message) {
+    document.getElementById("message").innerHTML = message;
 }
 
 function runTimer() {
@@ -45,8 +58,9 @@ function updateScreen(minutes, seconds) {
 function checkIfTimeHasExpired() {
     if (timer.minutes <= 0 && timer.seconds <= 0) {
         clearInterval(timer.intervalId);
-        notifyMe('You can now take a break.', 5000);
+        notifyMe('Time is up! You can now take a break.', 7000);
         timer.running = false;
+        setMessage('You can now take a break.');
     }
 }
 
@@ -54,7 +68,7 @@ function notifyMe(message, timeout) {
   if (Notification.permission !== "granted")
     Notification.requestPermission();
   else {
-    var notification = new Notification('Time is up!', {
+    var notification = new Notification('Pomodoro timer', {
       body: message,
     });
     notification.onclick = function () {
