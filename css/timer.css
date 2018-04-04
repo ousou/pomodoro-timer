@@ -8,6 +8,15 @@ header {
     font-size: 24px;
 }
 
+.main {
+    width: 450px;
+    display: inline-block;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    padding: 50px;
+}
+
 .display {
     display: inline-block;
     align: center;

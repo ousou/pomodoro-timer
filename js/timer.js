@@ -2,7 +2,6 @@ var timer = {};
 
 timer.running = false;
 
-
 document.addEventListener('DOMContentLoaded', function () {
   if (!Notification) {
     alert('Desktop notifications not available in your browser. Try Chromium.');
