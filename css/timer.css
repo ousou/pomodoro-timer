@@ -27,3 +27,7 @@ header {
     display: inline-block;
     float: left;
 }
+
+input[type=number]{
+    width: 50px;
+}

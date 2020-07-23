@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.getElementById("start").addEventListener("click", function(){
-    var minutes = 25;
+    var minutes = document.getElementById("time-input").value;
     var seconds = 0;
     startTimer(minutes, seconds);
 });
